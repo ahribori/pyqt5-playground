@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow, QTabWidget
 
 from src.ui.tab.basic import BasicTab
+from src.ui.tab.chart import ChartTab
 from src.ui.tab.grid import GridTab
 from src.ui.tab.table import TableTab
 
@@ -17,4 +18,5 @@ class Window(QMainWindow):
         self.tab.addTab(BasicTab(), 'Basic')
         self.tab.addTab(TableTab(), 'Table')
         self.tab.addTab(GridTab(), 'Grid')
-        self.tab.setCurrentIndex(1)
+        self.tab.addTab(ChartTab(), 'Chart')
+        self.tab.setCurrentIndex(3)
