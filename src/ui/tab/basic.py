@@ -1,10 +1,14 @@
-from PyQt5.QtWidgets import QWidget, QBoxLayout, QLabel, QPushButton, QDockWidget
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QWidget, QBoxLayout, QPushButton, QSplitter, QLabel, QGridLayout, QLineEdit, QTextEdit, \
+    QVBoxLayout
 
 
 class BasicTab(QWidget):
     def __init__(self):
         QWidget.__init__(self)
-        self.layout = QBoxLayout(QBoxLayout.TopToBottom)
-        button = QPushButton("&Button", self)
-        button.setGeometry(10, 10, 100, 40)
-        self.layout.addWidget(button)
+        vbox = QVBoxLayout()
+        self.setLayout(vbox)
+
+        vbox.addWidget(QPushButton('Button1'))
+        vbox.addWidget(QPushButton('Button2'))
+        vbox.addWidget(QPushButton('Button3'))

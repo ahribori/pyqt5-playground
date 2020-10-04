@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow, QTabWidget
 
 from src.ui.tab.basic import BasicTab
+from src.ui.tab.grid import GridTab
 from src.ui.tab.list import ListTab
 
 
@@ -15,3 +16,4 @@ class Window(QMainWindow):
     def _initTab(self):
         self.tab.addTab(BasicTab(), 'Basic')
         self.tab.addTab(ListTab(), 'List')
+        self.tab.addTab(GridTab(), 'Grid')
