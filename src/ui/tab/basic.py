@@ -9,6 +9,8 @@ class BasicTab(QWidget):
         vbox = QVBoxLayout()
         self.setLayout(vbox)
 
-        vbox.addWidget(QPushButton('Button1'))
+        button1 = QPushButton('Button1')
+        button1.setStyleSheet('background-color: red; color:white; padding: 8px;')
+        vbox.addWidget(button1)
         vbox.addWidget(QPushButton('Button2'))
         vbox.addWidget(QPushButton('Button3'))
