@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QComboBox
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import numpy as np
-from matplotlib.dates import date2num
+import matplotlib.dates as dt
 from matplotlib.pyplot import plot_date
 from mplfinance.original_flavor import candlestick_ohlc
 
@@ -61,13 +61,18 @@ class MatPlotLibTab(QWidget):
 
         self.fig.clear()
         ax = self.fig.add_subplot(111)
+        ax.xaxis.set_major_formatter(dt.DateFormatter('%H:%M'))
+        ax.xaxis.set_minor_locator(dt.DayLocator())
+
         candleData = list(map(
             lambda item:
-            [date2num(datetime.strptime(item[4], '%Y%m%d%H%M%S')), get_integer_price(item[0]),
+            [dt.date2num(datetime.strptime(item[4], '%Y%m%d%H%M%S')),
+             get_integer_price(item[0]),
+             get_integer_price(item[2]),
              get_integer_price(item[3]),
-             get_integer_price(item[1]),
-             get_integer_price(item[2])], data))
-        candlestick_ohlc(ax, candleData, width=0.001, colorup="r", colordown="b")
+             get_integer_price(item[1])], data))
+        print(candleData)
+        candlestick_ohlc(ax, candleData, width=0.0018, colorup="r", colordown="b")
         ax.autoscale_view()
         self.canvas.draw()
 
